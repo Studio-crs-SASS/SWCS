@@ -75,9 +75,8 @@ function swcs_plain_text(string $html): string
     $html = preg_replace('/<\/(p|div|section|article|main|header|footer|nav|li|h1|h2|h3|h4|h5|h6)>/i', "\n", $html) ?? $html;
 
     $text = strip_tags($html);
-    $text = swcs_normalize_space($text);
 
-    return $text;
+    return swcs_normalize_space($text);
 }
 
 function swcs_extract_meta(string $html): array
@@ -280,7 +279,12 @@ function swcs_extract_links(string $html, string $baseUrl, string $baseDomain): 
             $href = trim($match[1]);
             $text = swcs_normalize_space(strip_tags($match[2]));
 
-            if ($href === '' || str_starts_with($href, 'mailto:') || str_starts_with($href, 'tel:') || str_starts_with($href, 'javascript:')) {
+            if (
+                $href === '' ||
+                str_starts_with($href, 'mailto:') ||
+                str_starts_with($href, 'tel:') ||
+                str_starts_with($href, 'javascript:')
+            ) {
                 continue;
             }
 
@@ -628,6 +632,340 @@ function swcs_word_count(string $text): int
     return count($matches[0] ?? []);
 }
 
+function swcs_extract_semantic_tags(string $html): array
+{
+    $tags = [
+        'header' => preg_match_all('/<header\b[^>]*>/is', $html),
+        'main' => preg_match_all('/<main\b[^>]*>/is', $html),
+        'article' => preg_match_all('/<article\b[^>]*>/is', $html),
+        'section' => preg_match_all('/<section\b[^>]*>/is', $html),
+        'nav' => preg_match_all('/<nav\b[^>]*>/is', $html),
+        'aside' => preg_match_all('/<aside\b[^>]*>/is', $html),
+        'footer' => preg_match_all('/<footer\b[^>]*>/is', $html),
+        'form' => preg_match_all('/<form\b[^>]*>/is', $html),
+    ];
+
+    return [
+        'counts' => $tags,
+        'has_header' => ($tags['header'] ?? 0) > 0,
+        'has_main' => ($tags['main'] ?? 0) > 0,
+        'has_article' => ($tags['article'] ?? 0) > 0,
+        'has_section' => ($tags['section'] ?? 0) > 0,
+        'has_nav' => ($tags['nav'] ?? 0) > 0,
+        'has_footer' => ($tags['footer'] ?? 0) > 0,
+        'semantic_tag_count' => array_sum($tags),
+    ];
+}
+
+function swcs_build_dom_summary(string $html, array $headings, array $links, array $media, array $contentBlockItems): array
+{
+    return [
+        'html_length' => mb_strlen($html),
+        'heading_count' => array_sum(array_map('count', $headings)),
+        'h1_count' => count($headings['h1'] ?? []),
+        'h2_count' => count($headings['h2'] ?? []),
+        'h3_count' => count($headings['h3'] ?? []),
+        'link_count' => $links['counts']['all'] ?? 0,
+        'internal_link_count' => $links['counts']['internal'] ?? 0,
+        'external_link_count' => $links['counts']['external'] ?? 0,
+        'image_count' => $media['image_stats']['count'] ?? 0,
+        'content_block_count' => count($contentBlockItems),
+        'estimated_dom_tags' => preg_match_all('/<([a-z0-9]+)\b[^>]*>/i', $html),
+    ];
+}
+
+function swcs_build_page_patterns(array $semanticTags, array $headings, array $links, array $cta): array
+{
+    $patterns = [];
+
+    if (($semanticTags['has_main'] ?? false) || ($semanticTags['has_article'] ?? false)) {
+        $patterns[] = 'main_content_present';
+    }
+
+    if (count($headings['h1'] ?? []) > 0) {
+        $patterns[] = 'headline_present';
+    }
+
+    if (($links['counts']['internal'] ?? 0) > 0) {
+        $patterns[] = 'internal_navigation_present';
+    }
+
+    if (($cta['count'] ?? 0) > 0) {
+        $patterns[] = 'cta_present';
+    }
+
+    if (($semanticTags['has_footer'] ?? false)) {
+        $patterns[] = 'footer_present';
+    }
+
+    return [
+        'patterns' => $patterns,
+        'pattern_count' => count($patterns),
+        'page_type_candidate' => count($headings['h1'] ?? []) > 0 ? 'landing_or_top_page' : 'unknown',
+        'has_basic_page_pattern' => count($patterns) >= 3,
+    ];
+}
+
+function swcs_build_template_consistency(array $headings, array $contentBlockItems, array $links): array
+{
+    return [
+        'has_consistent_heading_base' => count($headings['h1'] ?? []) >= 1,
+        'has_content_blocks' => count($contentBlockItems) > 0,
+        'has_navigation_links' => ($links['counts']['internal'] ?? 0) > 0,
+        'consistency_score_base' => round((
+            (count($headings['h1'] ?? []) >= 1 ? 1 : 0) +
+            (count($contentBlockItems) > 0 ? 1 : 0) +
+            (($links['counts']['internal'] ?? 0) > 0 ? 1 : 0)
+        ) / 3, 3),
+    ];
+}
+
+function swcs_build_text_blocks(array $contentBlockItems): array
+{
+    return array_map(function (array $block): array {
+        return [
+            'type' => $block['type'] ?? 'unknown',
+            'text' => $block['text'] ?? '',
+            'text_length' => $block['text_length'] ?? 0,
+        ];
+    }, $contentBlockItems);
+}
+
+function swcs_extract_unique_terms(array $keywords): array
+{
+    return [
+        'items' => array_keys($keywords),
+        'count' => count($keywords),
+        'weighted' => $keywords,
+    ];
+}
+
+function swcs_extract_unique_phrases(array $contentBlockItems): array
+{
+    $phrases = [];
+
+    foreach ($contentBlockItems as $block) {
+        $text = $block['text'] ?? '';
+        $parts = preg_split('/[。．.!！？\?]/u', $text) ?: [];
+
+        foreach ($parts as $part) {
+            $phrase = swcs_normalize_space($part);
+
+            if ($phrase !== '' && mb_strlen($phrase) >= 8) {
+                $phrases[$phrase] = ($phrases[$phrase] ?? 0) + 1;
+            }
+        }
+    }
+
+    return [
+        'items' => array_slice(array_keys($phrases), 0, 30),
+        'count' => count($phrases),
+    ];
+}
+
+function swcs_build_originality_signals(array $uniqueTerms, array $uniquePhrases, int $wordCount): array
+{
+    $termCount = $uniqueTerms['count'] ?? 0;
+    $phraseCount = $uniquePhrases['count'] ?? 0;
+
+    return [
+        'unique_term_count' => $termCount,
+        'unique_phrase_count' => $phraseCount,
+        'word_count' => $wordCount,
+        'term_diversity_rate' => $wordCount > 0 ? round($termCount / $wordCount, 3) : 0,
+        'has_originality_signals' => $termCount > 0 || $phraseCount > 0,
+    ];
+}
+
+function swcs_extract_date_mentions(string $text): array
+{
+    $items = [];
+
+    $patterns = [
+        '/\b20\d{2}[.\-\/年]\s?\d{1,2}[.\-\/月]\s?\d{1,2}日?\b/u',
+        '/\b20\d{2}年\b/u',
+        '/\b20\d{2}[.\-\/]\d{1,2}[.\-\/]\d{1,2}\b/u',
+        '/\b20\d{2}\.\d{2}\.\d{2}\b/u',
+    ];
+
+    foreach ($patterns as $pattern) {
+        if (preg_match_all($pattern, $text, $matches)) {
+            foreach ($matches[0] as $match) {
+                $items[] = $match;
+            }
+        }
+    }
+
+    $items = array_values(array_unique($items));
+
+    return [
+        'items' => $items,
+        'count' => count($items),
+    ];
+}
+
+function swcs_build_related_terms(array $keywords, array $headings, string $title): array
+{
+    $headingText = [];
+
+    foreach ($headings as $items) {
+        foreach ($items as $item) {
+            $headingText[] = $item;
+        }
+    }
+
+    return [
+        'title_terms' => swcs_extract_keywords($title),
+        'heading_terms' => swcs_extract_keywords(implode(' ', $headingText)),
+        'content_terms' => $keywords,
+        'top_related_terms' => array_slice(array_keys($keywords), 0, 15),
+    ];
+}
+
+function swcs_build_duplicate_blocks(array $contentBlockItems): array
+{
+    $seen = [];
+    $duplicates = [];
+
+    foreach ($contentBlockItems as $block) {
+        $text = swcs_normalize_space($block['text'] ?? '');
+
+        if ($text === '') {
+            continue;
+        }
+
+        $hash = md5($text);
+
+        if (isset($seen[$hash])) {
+            $duplicates[] = [
+                'text' => mb_substr($text, 0, 200),
+                'text_length' => mb_strlen($text),
+            ];
+        }
+
+        $seen[$hash] = true;
+    }
+
+    return [
+        'items' => $duplicates,
+        'count' => count($duplicates),
+        'duplicate_rate' => count($contentBlockItems) > 0 ? round(count($duplicates) / count($contentBlockItems), 3) : 0,
+    ];
+}
+
+function swcs_build_semantic_groups(array $keywords): array
+{
+    $groups = [
+        'brand' => [],
+        'service' => [],
+        'action' => [],
+        'location' => [],
+        'other' => [],
+    ];
+
+    foreach ($keywords as $term => $count) {
+        $lower = mb_strtolower((string)$term);
+
+        if (
+            str_contains($lower, 'studio') ||
+            str_contains($lower, 'life') ||
+            str_contains($lower, 'escortist') ||
+            str_contains($lower, 'syuji')
+        ) {
+            $groups['brand'][$term] = $count;
+        } elseif (
+            str_contains($lower, 'design') ||
+            str_contains($lower, 'personal') ||
+            str_contains($lower, 'official')
+        ) {
+            $groups['service'][$term] = $count;
+        } elseif (
+            str_contains($lower, 'contact') ||
+            str_contains($lower, '予約') ||
+            str_contains($lower, '相談')
+        ) {
+            $groups['action'][$term] = $count;
+        } elseif (
+            str_contains($lower, 'osaka') ||
+            str_contains($lower, '大阪') ||
+            str_contains($lower, '岬')
+        ) {
+            $groups['location'][$term] = $count;
+        } else {
+            $groups['other'][$term] = $count;
+        }
+    }
+
+    return [
+        'groups' => $groups,
+        'group_count' => count(array_filter($groups, fn (array $items): bool => count($items) > 0)),
+    ];
+}
+
+function swcs_extract_videos(string $html): array
+{
+    $videos = [];
+
+    if (preg_match_all('/<(video|iframe)\b[^>]*>/is', $html, $matches, PREG_SET_ORDER)) {
+        foreach ($matches as $index => $match) {
+            $tag = $match[0];
+
+            $videos[] = [
+                'type' => strtolower($match[1]),
+                'index' => $index + 1,
+                'src' => swcs_get_attr($tag, 'src'),
+                'title' => swcs_get_attr($tag, 'title'),
+                'class' => swcs_get_attr($tag, 'class'),
+                'id' => swcs_get_attr($tag, 'id'),
+            ];
+        }
+    }
+
+    return [
+        'items' => $videos,
+        'count' => count($videos),
+    ];
+}
+
+function swcs_build_alt_texts(array $media): array
+{
+    $items = [];
+
+    foreach (($media['items'] ?? []) as $image) {
+        $items[] = [
+            'src' => $image['src'] ?? '',
+            'alt' => $image['alt'] ?? '',
+            'has_alt' => ($image['alt'] ?? '') !== '',
+        ];
+    }
+
+    return [
+        'items' => $items,
+        'count' => count($items),
+        'missing_count' => $media['image_stats']['alt_missing'] ?? 0,
+    ];
+}
+
+function swcs_build_cta_texts(array $cta): array
+{
+    $texts = [];
+
+    foreach (($cta['items'] ?? []) as $item) {
+        $candidate = $item['text'] ?? $item['value'] ?? $item['aria_label'] ?? '';
+
+        if ($candidate !== '') {
+            $texts[] = $candidate;
+        }
+    }
+
+    $texts = array_values(array_unique($texts));
+
+    return [
+        'items' => $texts,
+        'count' => count($texts),
+    ];
+}
+
 $config = [];
 $configPath = SWCS_ROOT . '/Config';
 
@@ -686,6 +1024,7 @@ $domain = parse_url($url, PHP_URL_HOST) ?: '';
 $page = $structure['page'] ?? [];
 $metaExtra = swcs_extract_meta($html);
 $title = $page['title'] ?? ($parsed['title'] ?? ($metaExtra['og_title'] ?? ''));
+
 $headings = $page['headings'] ?? swcs_extract_headings($html);
 $sections = swcs_extract_sections($html, $headings);
 $links = swcs_extract_links($html, $url, $domain);
@@ -694,6 +1033,22 @@ $cta = swcs_extract_cta($html, $links);
 $keywords = swcs_extract_keywords($text);
 $contentBlockItems = swcs_extract_content_blocks($html);
 $wordCount = swcs_word_count($text);
+
+$semanticTags = swcs_extract_semantic_tags($html);
+$domSummary = swcs_build_dom_summary($html, $headings, $links, $media, $contentBlockItems);
+$pagePatterns = swcs_build_page_patterns($semanticTags, $headings, $links, $cta);
+$templateConsistency = swcs_build_template_consistency($headings, $contentBlockItems, $links);
+$textBlocks = swcs_build_text_blocks($contentBlockItems);
+$uniqueTerms = swcs_extract_unique_terms($keywords);
+$uniquePhrases = swcs_extract_unique_phrases($contentBlockItems);
+$originalitySignals = swcs_build_originality_signals($uniqueTerms, $uniquePhrases, $wordCount);
+$dateMentions = swcs_extract_date_mentions($text);
+$relatedTerms = swcs_build_related_terms($keywords, $headings, $title);
+$duplicateBlocks = swcs_build_duplicate_blocks($contentBlockItems);
+$semanticGroups = swcs_build_semantic_groups($keywords);
+$videos = swcs_extract_videos($html);
+$altTexts = swcs_build_alt_texts($media);
+$ctaTexts = swcs_build_cta_texts($cta);
 
 $contentBlocks = [
     'title' => $title,
@@ -708,6 +1063,7 @@ $contentBlocks = [
 
 $headingErrors = [];
 $structureWarnings = [];
+$structureErrors = [];
 
 if (count($headings['h1'] ?? []) === 0) {
     $headingErrors[] = 'H1 heading is missing.';
@@ -723,6 +1079,14 @@ if (mb_strlen($text) < 1000) {
 
 if ($cta['count'] === 0) {
     $structureWarnings[] = 'CTA elements were not detected.';
+}
+
+if (($semanticTags['semantic_tag_count'] ?? 0) === 0) {
+    $structureErrors[] = 'Semantic HTML tags were not detected.';
+}
+
+if (($domSummary['heading_count'] ?? 0) === 0) {
+    $structureErrors[] = 'Heading tags were not detected.';
 }
 
 $output = [
@@ -749,6 +1113,9 @@ $output = [
             $metaExtra,
             [
                 'title' => $title,
+                'last_modified' => $result['access']['headers']['last-modified'] ?? null,
+                'published_dates' => $dateMentions,
+                'sitemap_lastmod' => null,
                 'normalized_at' => date(DATE_ATOM),
                 'updated_at' => null,
                 'freshness' => [
@@ -772,6 +1139,11 @@ $output = [
                 ],
                 'sections' => $sections,
                 'section_count' => count($sections),
+                'semantic_tags' => $semanticTags,
+                'dom_summary' => $domSummary,
+                'page_patterns' => $pagePatterns,
+                'template_consistency' => $templateConsistency,
+                'cta' => $cta,
                 'page_structure' => [
                     'has_title' => $title !== '',
                     'h1_count' => count($headings['h1'] ?? []),
@@ -799,6 +1171,15 @@ $output = [
             'text_length' => mb_strlen($text),
             'word_count' => $wordCount,
             'keywords' => $keywords,
+            'text_blocks' => $textBlocks,
+            'unique_terms' => $uniqueTerms,
+            'unique_phrases' => $uniquePhrases,
+            'originality_signals' => $originalitySignals,
+            'date_mentions' => $dateMentions,
+            'related_terms' => $relatedTerms,
+            'duplicate_blocks' => $duplicateBlocks,
+            'semantic_groups' => $semanticGroups,
+            'cta_texts' => $ctaTexts,
             'content_blocks' => $contentBlocks,
             'coverage' => [
                 'has_title' => $title !== '',
@@ -819,10 +1200,20 @@ $output = [
             'external' => $links['external'],
             'counts' => $links['counts'],
         ],
-        'media' => $media,
+        'media' => array_merge(
+            $media,
+            [
+                'images' => $media['items'] ?? [],
+                'videos' => $videos,
+                'alt_texts' => $altTexts,
+            ]
+        ),
         'relationship' => [
             'internal_links' => $links['internal'],
             'external_links' => $links['external'],
+            'related_terms' => $relatedTerms,
+            'semantic_groups' => $semanticGroups,
+            'duplicate_blocks' => $duplicateBlocks,
             'keyword_consistency' => [
                 'keywords' => $keywords,
                 'top_keywords' => array_keys($keywords),
@@ -834,6 +1225,7 @@ $output = [
                 'sections' => $sections,
                 'links' => $links['all'],
                 'content_blocks' => $contentBlockItems,
+                'related_terms' => $relatedTerms,
             ],
         ],
         'flow' => [
@@ -846,6 +1238,16 @@ $output = [
                 'internal_link_count' => $links['counts']['internal'],
             ],
             'cta' => $cta,
+            'cta_placement' => [
+                'cta_count' => $cta['count'] ?? 0,
+                'has_cta' => ($cta['count'] ?? 0) > 0,
+                'cta_items' => $cta['items'] ?? [],
+            ],
+            'conversion_path' => [
+                'has_navigation' => ($links['counts']['internal'] ?? 0) > 0,
+                'has_cta' => ($cta['count'] ?? 0) > 0,
+                'search_form_count' => $cta['search_form_count'] ?? 0,
+            ],
             'user_flow' => [
                 'has_title' => $title !== '',
                 'has_h1' => count($headings['h1'] ?? []) > 0,
@@ -865,6 +1267,7 @@ $output = [
             [
                 'heading_errors' => $headingErrors,
                 'structure_warnings' => $structureWarnings,
+                'structure_errors' => $structureErrors,
             ]
         ),
     ],
@@ -872,7 +1275,7 @@ $output = [
         'engine' => $result['engine'] ?? 'SWCS',
         'mode' => $result['mode'] ?? ($config['engine']['mode'] ?? 'unknown'),
         'generated_at' => date(DATE_ATOM),
-        'api_revision' => 'SWCS Public API Ver.1.1',
+        'api_revision' => 'SWCS Public API Ver.1.2',
     ],
 ];
 
