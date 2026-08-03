@@ -1,0 +1,1750 @@
+{
+    "status": "success",
+    "system": "SWCS",
+    "version": "1.0.0",
+    "target": {
+        "url": "https://life-escortist.com",
+        "domain": "life-escortist.com",
+        "checked_at": "2026-08-03T05:38:11+00:00"
+    },
+    "data": {
+        "access": {
+            "accessible": true,
+            "status_code": "200",
+            "headers": [
+                "HTTP/1.1 200 OK",
+                "Date: Mon, 03 Aug 2026 05:38:11 GMT",
+                "Content-Type: text/html; charset=UTF-8",
+                "Transfer-Encoding: chunked",
+                "Connection: close",
+                "Server: LiteSpeed",
+                "x-powered-by: PHP/8.3.32",
+                "link: <https://life-escortist.com/wp-json/>; rel=\"https://api.w.org/\"",
+                "link: <https://life-escortist.com/wp-json/wp/v2/pages/19>; rel=\"alternate\"; title=\"JSON\"; type=\"application/json\"",
+                "link: <https://life-escortist.com/>; rel=shortlink",
+                "etag: \"112-1785461691;;;\"",
+                "x-litespeed-cache: hit",
+                "x-turbo-charged-by: LiteSpeed"
+            ],
+            "response": {
+                "status_code": "200",
+                "accessible": true
+            }
+        },
+        "meta": {
+            "normalized_at": "2026-08-03T05:38:11+00:00",
+            "description": "Life-Escortist is a luxury personal escort and QOL design service founded by Syuji Konishi, Founder of Life-Escortist and CEO of Studio-crs. Through personal curation, wellness, business guidance, and purpose design, we support an elegant and meaningful life.",
+            "keywords": "",
+            "og_title": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+            "og_description": "Life-Escortistは、経営者・富裕層向けの専属ライフエスコートサービスです。パーソナルサービス、メンター、同行サービス、ビジネス伴走、思想整理まで、守秘義務を徹底し、クライアントの全てをエスコートします。",
+            "title": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+            "last_modified": null,
+            "published_dates": {
+                "items": [
+                    "2026.04.27"
+                ],
+                "count": 1
+            },
+            "sitemap_lastmod": null,
+            "updated_at": null,
+            "freshness": {
+                "last_modified": null,
+                "checked_at": "2026-08-03T05:38:11+00:00"
+            }
+        },
+        "structure": {
+            "page": {
+                "title": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                "headings": {
+                    "h1": [
+                        "TOP"
+                    ]
+                },
+                "links": [
+                    "https://life-escortist.com/",
+                    "https://life-escortist.com/",
+                    "https://life-escortist.com/jp/",
+                    "https://life-escortist.com/en/",
+                    "https://life-escortist.com/fr/",
+                    "https://studio-crs.com/",
+                    "https://life-escortist.com/author/life-escortist/",
+                    "https://life-escortist.com/",
+                    "https://life-escortist.com",
+                    "#"
+                ]
+            },
+            "title": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+            "headings": {
+                "h1": [
+                    "TOP"
+                ]
+            },
+            "heading_tree": {
+                "h1": [
+                    "TOP"
+                ],
+                "h2": [],
+                "h3": [],
+                "h4": [],
+                "h5": [],
+                "h6": []
+            },
+            "sections": [
+                {
+                    "type": "heading",
+                    "level": "h1",
+                    "index": 1,
+                    "title": "TOP",
+                    "text_preview": "TOP"
+                },
+                {
+                    "type": "article",
+                    "level": "article",
+                    "index": 1,
+                    "title": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’v",
+                    "text_preview": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist",
+                    "text_length": 151
+                }
+            ],
+            "section_count": 2,
+            "semantic_tags": {
+                "counts": {
+                    "header": 2,
+                    "main": 1,
+                    "article": 1,
+                    "section": 0,
+                    "nav": 2,
+                    "aside": 0,
+                    "footer": 2,
+                    "form": 1
+                },
+                "has_header": true,
+                "has_main": true,
+                "has_article": true,
+                "has_section": false,
+                "has_nav": true,
+                "has_footer": true,
+                "semantic_tag_count": 9
+            },
+            "dom_summary": {
+                "html_length": 299211,
+                "heading_count": 1,
+                "h1_count": 1,
+                "h2_count": 0,
+                "h3_count": 0,
+                "link_count": 10,
+                "internal_link_count": 9,
+                "external_link_count": 1,
+                "image_count": 2,
+                "content_block_count": 9,
+                "estimated_dom_tags": 198
+            },
+            "page_patterns": {
+                "patterns": [
+                    "main_content_present",
+                    "headline_present",
+                    "internal_navigation_present",
+                    "footer_present"
+                ],
+                "pattern_count": 4,
+                "page_type_candidate": "landing_or_top_page",
+                "has_basic_page_pattern": true
+            },
+            "template_consistency": {
+                "has_consistent_heading_base": true,
+                "has_content_blocks": true,
+                "has_navigation_links": true,
+                "consistency_score_base": 1
+            },
+            "cta": {
+                "count": 0,
+                "items": [],
+                "keywords": [
+                    "お問い合わせ",
+                    "問合せ",
+                    "お問合せ",
+                    "相談",
+                    "無料相談",
+                    "予約",
+                    "ご予約",
+                    "申し込み",
+                    "申込み",
+                    "申込",
+                    "資料請求",
+                    "見積",
+                    "見積もり",
+                    "導入",
+                    "依頼",
+                    "購入",
+                    "注文",
+                    "登録",
+                    "体験",
+                    "診断",
+                    "チェック",
+                    "始める",
+                    "詳しく",
+                    "もっと見る",
+                    "続きを読む",
+                    "contact",
+                    "inquiry",
+                    "reserve",
+                    "reservation",
+                    "booking",
+                    "book",
+                    "apply",
+                    "start",
+                    "trial",
+                    "free",
+                    "quote",
+                    "estimate",
+                    "consult",
+                    "consultation",
+                    "download",
+                    "schedule",
+                    "order",
+                    "buy",
+                    "purchase",
+                    "register",
+                    "signup",
+                    "sign up",
+                    "learn more",
+                    "more",
+                    "detail",
+                    "details"
+                ],
+                "link_count": 0,
+                "button_count": 0,
+                "input_count": 0,
+                "form_count": 0,
+                "search_form_count": 1,
+                "search_forms": [
+                    {
+                        "type": "form",
+                        "index": 1,
+                        "action": "https://life-escortist.com/",
+                        "method": "get",
+                        "aria_label": "",
+                        "class": "search-box input-box",
+                        "id": "",
+                        "is_cta_like": false,
+                        "is_search_like": true
+                    }
+                ]
+            },
+            "page_structure": {
+                "has_title": true,
+                "h1_count": 1,
+                "h2_count": 0,
+                "h3_count": 0,
+                "section_count": 2,
+                "content_block_count": 9,
+                "link_count": 10,
+                "cta_count": 0
+            },
+            "content_blocks": {
+                "title": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                "plain_text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO] TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO] © 2002-2026 Studio-crs. ホーム 検索 トップ",
+                "text_length": 346,
+                "word_count": 43,
+                "keyword_count": 25,
+                "sections_count": 2,
+                "content_block_count": 9,
+                "items": [
+                    {
+                        "type": "main",
+                        "index": 1,
+                        "text": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist",
+                        "text_length": 151
+                    },
+                    {
+                        "type": "article",
+                        "index": 1,
+                        "text": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist",
+                        "text_length": 151
+                    },
+                    {
+                        "type": "div",
+                        "index": 1,
+                        "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                        "text_length": 79
+                    },
+                    {
+                        "type": "div",
+                        "index": 10,
+                        "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                        "text_length": 79
+                    },
+                    {
+                        "type": "div",
+                        "index": 7,
+                        "text": "お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français",
+                        "text_length": 74
+                    },
+                    {
+                        "type": "div",
+                        "index": 6,
+                        "text": "Life-Escortist Official Web",
+                        "text_length": 27
+                    },
+                    {
+                        "type": "div",
+                        "index": 12,
+                        "text": "© 2002-2026 Studio-crs.",
+                        "text_length": 23
+                    },
+                    {
+                        "type": "div",
+                        "index": 8,
+                        "text": "©️2002- Studio-crs",
+                        "text_length": 18
+                    },
+                    {
+                        "type": "div",
+                        "index": 9,
+                        "text": "life-escortist",
+                        "text_length": 14
+                    }
+                ]
+            },
+            "navigation": {
+                "internal_link_count": 9,
+                "external_link_count": 1,
+                "has_navigation": true
+            }
+        },
+        "content": {
+            "success": true,
+            "length": 301694,
+            "html_preview": "&lt;!doctype html&gt;\n&lt;html lang=&quot;ja&quot;&gt;\n\n&lt;head&gt;\n&lt;meta charset=&quot;utf-8&quot;&gt;\n&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, viewport-fit=cover&quot;&gt;\n&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer-when-downgrade&quot;&gt;\n&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;\n\n\n  \n\n\n  \n  \n\n  &lt;!-- preconnect dns-prefetch --&gt;\n&lt;link rel=&quot;preconnect dns-prefetch&quot; href=&quot;//www.googletagmanager.com&quot;&gt;\n&lt;link rel=&quot;preconnect dns-prefetch&quot; href=&quot;//www.google-analytics.com&quot;&gt;\n&lt;link rel=&quot;preconnect dns-prefetch&quot; href",
+            "parsed": {
+                "success": true,
+                "title": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                "h1": [
+                    "TOP"
+                ]
+            },
+            "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO] TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO] © 2002-2026 Studio-crs. ホーム 検索 トップ",
+            "text_length": 346,
+            "word_count": 43,
+            "keywords": {
+                "life-escortist": 4,
+                "studio-crs": 4,
+                "personal": 2,
+                "escort": 2,
+                "qol": 2,
+                "design": 2,
+                "syuji": 2,
+                "konishi": 2,
+                "ceo": 2,
+                "top": 1,
+                "official": 1,
+                "web": 1,
+                "お待ちしていました": 1,
+                "日本語": 1,
+                "been": 1,
+                "expecting": 1,
+                "you": 1,
+                "english": 1,
+                "vous": 1,
+                "attendais": 1,
+                "fran": 1,
+                "ais": 1,
+                "ホーム": 1,
+                "検索": 1,
+                "トップ": 1
+            },
+            "text_blocks": [
+                {
+                    "type": "main",
+                    "text": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist",
+                    "text_length": 151
+                },
+                {
+                    "type": "article",
+                    "text": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist",
+                    "text_length": 151
+                },
+                {
+                    "type": "div",
+                    "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                    "text_length": 79
+                },
+                {
+                    "type": "div",
+                    "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                    "text_length": 79
+                },
+                {
+                    "type": "div",
+                    "text": "お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français",
+                    "text_length": 74
+                },
+                {
+                    "type": "div",
+                    "text": "Life-Escortist Official Web",
+                    "text_length": 27
+                },
+                {
+                    "type": "div",
+                    "text": "© 2002-2026 Studio-crs.",
+                    "text_length": 23
+                },
+                {
+                    "type": "div",
+                    "text": "©️2002- Studio-crs",
+                    "text_length": 18
+                },
+                {
+                    "type": "div",
+                    "text": "life-escortist",
+                    "text_length": 14
+                }
+            ],
+            "unique_terms": {
+                "items": [
+                    "life-escortist",
+                    "studio-crs",
+                    "personal",
+                    "escort",
+                    "qol",
+                    "design",
+                    "syuji",
+                    "konishi",
+                    "ceo",
+                    "top",
+                    "official",
+                    "web",
+                    "お待ちしていました",
+                    "日本語",
+                    "been",
+                    "expecting",
+                    "you",
+                    "english",
+                    "vous",
+                    "attendais",
+                    "fran",
+                    "ais",
+                    "ホーム",
+                    "検索",
+                    "トップ"
+                ],
+                "count": 25,
+                "weighted": {
+                    "life-escortist": 4,
+                    "studio-crs": 4,
+                    "personal": 2,
+                    "escort": 2,
+                    "qol": 2,
+                    "design": 2,
+                    "syuji": 2,
+                    "konishi": 2,
+                    "ceo": 2,
+                    "top": 1,
+                    "official": 1,
+                    "web": 1,
+                    "お待ちしていました": 1,
+                    "日本語": 1,
+                    "been": 1,
+                    "expecting": 1,
+                    "you": 1,
+                    "english": 1,
+                    "vous": 1,
+                    "attendais": 1,
+                    "fran": 1,
+                    "ais": 1,
+                    "ホーム": 1,
+                    "検索": 1,
+                    "トップ": 1
+                }
+            },
+            "unique_phrases": {
+                "items": [
+                    "TOP 2026",
+                    "27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you",
+                    "English Je vous attendais",
+                    "Français ©️2002- Studio-crs life-escortist",
+                    "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                    "お待ちしていました 日本語 I’ve been expecting you",
+                    "Français",
+                    "Life-Escortist Official Web",
+                    "© 2002-2026 Studio-crs",
+                    "©️2002- Studio-crs",
+                    "life-escortist"
+                ],
+                "count": 11
+            },
+            "originality_signals": {
+                "unique_term_count": 25,
+                "unique_phrase_count": 11,
+                "word_count": 43,
+                "term_diversity_rate": 0.581,
+                "has_originality_signals": true
+            },
+            "date_mentions": {
+                "items": [
+                    "2026.04.27"
+                ],
+                "count": 1
+            },
+            "related_terms": {
+                "title_terms": {
+                    "life-escortist": 1,
+                    "personal": 1,
+                    "escort": 1,
+                    "qol": 1,
+                    "design": 1,
+                    "syuji": 1,
+                    "konishi": 1,
+                    "studio-crs": 1,
+                    "ceo": 1
+                },
+                "heading_terms": {
+                    "top": 1
+                },
+                "content_terms": {
+                    "life-escortist": 4,
+                    "studio-crs": 4,
+                    "personal": 2,
+                    "escort": 2,
+                    "qol": 2,
+                    "design": 2,
+                    "syuji": 2,
+                    "konishi": 2,
+                    "ceo": 2,
+                    "top": 1,
+                    "official": 1,
+                    "web": 1,
+                    "お待ちしていました": 1,
+                    "日本語": 1,
+                    "been": 1,
+                    "expecting": 1,
+                    "you": 1,
+                    "english": 1,
+                    "vous": 1,
+                    "attendais": 1,
+                    "fran": 1,
+                    "ais": 1,
+                    "ホーム": 1,
+                    "検索": 1,
+                    "トップ": 1
+                },
+                "top_related_terms": [
+                    "life-escortist",
+                    "studio-crs",
+                    "personal",
+                    "escort",
+                    "qol",
+                    "design",
+                    "syuji",
+                    "konishi",
+                    "ceo",
+                    "top",
+                    "official",
+                    "web",
+                    "お待ちしていました",
+                    "日本語",
+                    "been"
+                ]
+            },
+            "duplicate_blocks": {
+                "items": [
+                    {
+                        "text": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist",
+                        "text_length": 151
+                    },
+                    {
+                        "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                        "text_length": 79
+                    }
+                ],
+                "count": 2,
+                "duplicate_rate": 0.222
+            },
+            "semantic_groups": {
+                "groups": {
+                    "brand": {
+                        "life-escortist": 4,
+                        "studio-crs": 4,
+                        "syuji": 2
+                    },
+                    "service": {
+                        "personal": 2,
+                        "design": 2,
+                        "official": 1
+                    },
+                    "action": [],
+                    "location": [],
+                    "other": {
+                        "escort": 2,
+                        "qol": 2,
+                        "konishi": 2,
+                        "ceo": 2,
+                        "top": 1,
+                        "web": 1,
+                        "お待ちしていました": 1,
+                        "日本語": 1,
+                        "been": 1,
+                        "expecting": 1,
+                        "you": 1,
+                        "english": 1,
+                        "vous": 1,
+                        "attendais": 1,
+                        "fran": 1,
+                        "ais": 1,
+                        "ホーム": 1,
+                        "検索": 1,
+                        "トップ": 1
+                    }
+                },
+                "group_count": 3
+            },
+            "cta_texts": {
+                "items": [],
+                "count": 0
+            },
+            "content_blocks": {
+                "title": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                "plain_text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO] TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO] © 2002-2026 Studio-crs. ホーム 検索 トップ",
+                "text_length": 346,
+                "word_count": 43,
+                "keyword_count": 25,
+                "sections_count": 2,
+                "content_block_count": 9,
+                "items": [
+                    {
+                        "type": "main",
+                        "index": 1,
+                        "text": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist",
+                        "text_length": 151
+                    },
+                    {
+                        "type": "article",
+                        "index": 1,
+                        "text": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist",
+                        "text_length": 151
+                    },
+                    {
+                        "type": "div",
+                        "index": 1,
+                        "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                        "text_length": 79
+                    },
+                    {
+                        "type": "div",
+                        "index": 10,
+                        "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                        "text_length": 79
+                    },
+                    {
+                        "type": "div",
+                        "index": 7,
+                        "text": "お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français",
+                        "text_length": 74
+                    },
+                    {
+                        "type": "div",
+                        "index": 6,
+                        "text": "Life-Escortist Official Web",
+                        "text_length": 27
+                    },
+                    {
+                        "type": "div",
+                        "index": 12,
+                        "text": "© 2002-2026 Studio-crs.",
+                        "text_length": 23
+                    },
+                    {
+                        "type": "div",
+                        "index": 8,
+                        "text": "©️2002- Studio-crs",
+                        "text_length": 18
+                    },
+                    {
+                        "type": "div",
+                        "index": 9,
+                        "text": "life-escortist",
+                        "text_length": 14
+                    }
+                ]
+            },
+            "coverage": {
+                "has_title": true,
+                "has_description": true,
+                "has_h1": true,
+                "has_h2": false,
+                "has_sections": true,
+                "has_content_blocks": true,
+                "has_internal_links": true,
+                "has_external_links": true,
+                "has_social_links": false,
+                "has_email_links": false,
+                "has_images": true,
+                "has_cta": false
+            }
+        },
+        "links": {
+            "all": [
+                {
+                    "url": "https://life-escortist.com/",
+                    "normalized_url": "https://life-escortist.com/",
+                    "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "site-name site-name-text-link",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/",
+                    "normalized_url": "https://life-escortist.com/",
+                    "text": "Life-Escortist Official Web",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "header-link",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/jp/",
+                    "normalized_url": "https://life-escortist.com/jp/",
+                    "text": "お待ちしていました 日本語",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "welcome-jp gold-text",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/en/",
+                    "normalized_url": "https://life-escortist.com/en/",
+                    "text": "I’ve been expecting you. English",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "welcome-en gold-text",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/fr/",
+                    "normalized_url": "https://life-escortist.com/fr/",
+                    "text": "Je vous attendais. Français",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "welcome-fr gold-text",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://studio-crs.com/",
+                    "normalized_url": "https://studio-crs.com/",
+                    "text": "Studio-crs",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "footer-link",
+                    "id": "",
+                    "target": "_blank",
+                    "rel": "noopener"
+                },
+                {
+                    "url": "https://life-escortist.com/author/life-escortist/",
+                    "normalized_url": "https://life-escortist.com/author/life-escortist/",
+                    "text": "life-escortist",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "author-link",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/",
+                    "normalized_url": "https://life-escortist.com/",
+                    "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "site-name site-name-text-link",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com",
+                    "normalized_url": "https://life-escortist.com",
+                    "text": "ホーム",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "menu-button-in",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "#",
+                    "normalized_url": "https://life-escortist.com#",
+                    "text": "トップ",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "go-to-top-common top-menu-a menu-button-in",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                }
+            ],
+            "internal": [
+                {
+                    "url": "https://life-escortist.com/",
+                    "normalized_url": "https://life-escortist.com/",
+                    "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "site-name site-name-text-link",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/",
+                    "normalized_url": "https://life-escortist.com/",
+                    "text": "Life-Escortist Official Web",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "header-link",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/jp/",
+                    "normalized_url": "https://life-escortist.com/jp/",
+                    "text": "お待ちしていました 日本語",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "welcome-jp gold-text",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/en/",
+                    "normalized_url": "https://life-escortist.com/en/",
+                    "text": "I’ve been expecting you. English",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "welcome-en gold-text",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/fr/",
+                    "normalized_url": "https://life-escortist.com/fr/",
+                    "text": "Je vous attendais. Français",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "welcome-fr gold-text",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/author/life-escortist/",
+                    "normalized_url": "https://life-escortist.com/author/life-escortist/",
+                    "text": "life-escortist",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "author-link",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/",
+                    "normalized_url": "https://life-escortist.com/",
+                    "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "site-name site-name-text-link",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com",
+                    "normalized_url": "https://life-escortist.com",
+                    "text": "ホーム",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "menu-button-in",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "#",
+                    "normalized_url": "https://life-escortist.com#",
+                    "text": "トップ",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "go-to-top-common top-menu-a menu-button-in",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                }
+            ],
+            "external": [
+                {
+                    "url": "https://studio-crs.com/",
+                    "normalized_url": "https://studio-crs.com/",
+                    "text": "Studio-crs",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "footer-link",
+                    "id": "",
+                    "target": "_blank",
+                    "rel": "noopener"
+                }
+            ],
+            "social": [],
+            "email": [],
+            "counts": {
+                "all": 10,
+                "internal": 9,
+                "external": 1,
+                "social": 0,
+                "email": 0
+            }
+        },
+        "media": {
+            "items": [
+                {
+                    "src": "http://life-escortist.com/wp-content/uploads/2026/05/OGP-1.png",
+                    "alt": "",
+                    "title": "",
+                    "class": "",
+                    "id": "",
+                    "loading": ""
+                },
+                {
+                    "src": "http://life-escortist.com/wp-content/uploads/2026/04/2cfc6183de3a35ddf8c4d86d67d793f3.png",
+                    "alt": "Studio-crs Logo",
+                    "title": "",
+                    "class": "site-logo",
+                    "id": "",
+                    "loading": ""
+                }
+            ],
+            "image_stats": {
+                "count": 2,
+                "alt_missing": 1,
+                "alt_rate": 0.5
+            },
+            "images": [
+                {
+                    "src": "http://life-escortist.com/wp-content/uploads/2026/05/OGP-1.png",
+                    "alt": "",
+                    "title": "",
+                    "class": "",
+                    "id": "",
+                    "loading": ""
+                },
+                {
+                    "src": "http://life-escortist.com/wp-content/uploads/2026/04/2cfc6183de3a35ddf8c4d86d67d793f3.png",
+                    "alt": "Studio-crs Logo",
+                    "title": "",
+                    "class": "site-logo",
+                    "id": "",
+                    "loading": ""
+                }
+            ],
+            "videos": {
+                "items": [],
+                "count": 0
+            },
+            "alt_texts": {
+                "items": [
+                    {
+                        "src": "http://life-escortist.com/wp-content/uploads/2026/05/OGP-1.png",
+                        "alt": "",
+                        "has_alt": false
+                    },
+                    {
+                        "src": "http://life-escortist.com/wp-content/uploads/2026/04/2cfc6183de3a35ddf8c4d86d67d793f3.png",
+                        "alt": "Studio-crs Logo",
+                        "has_alt": true
+                    }
+                ],
+                "count": 2,
+                "missing_count": 1
+            }
+        },
+        "relationship": {
+            "internal_links": [
+                {
+                    "url": "https://life-escortist.com/",
+                    "normalized_url": "https://life-escortist.com/",
+                    "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "site-name site-name-text-link",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/",
+                    "normalized_url": "https://life-escortist.com/",
+                    "text": "Life-Escortist Official Web",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "header-link",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/jp/",
+                    "normalized_url": "https://life-escortist.com/jp/",
+                    "text": "お待ちしていました 日本語",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "welcome-jp gold-text",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/en/",
+                    "normalized_url": "https://life-escortist.com/en/",
+                    "text": "I’ve been expecting you. English",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "welcome-en gold-text",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/fr/",
+                    "normalized_url": "https://life-escortist.com/fr/",
+                    "text": "Je vous attendais. Français",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "welcome-fr gold-text",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/author/life-escortist/",
+                    "normalized_url": "https://life-escortist.com/author/life-escortist/",
+                    "text": "life-escortist",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "author-link",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com/",
+                    "normalized_url": "https://life-escortist.com/",
+                    "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "site-name site-name-text-link",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "https://life-escortist.com",
+                    "normalized_url": "https://life-escortist.com",
+                    "text": "ホーム",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "menu-button-in",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                },
+                {
+                    "url": "#",
+                    "normalized_url": "https://life-escortist.com#",
+                    "text": "トップ",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "go-to-top-common top-menu-a menu-button-in",
+                    "id": "",
+                    "target": "",
+                    "rel": ""
+                }
+            ],
+            "external_links": [
+                {
+                    "url": "https://studio-crs.com/",
+                    "normalized_url": "https://studio-crs.com/",
+                    "text": "Studio-crs",
+                    "title": "",
+                    "aria_label": "",
+                    "class": "footer-link",
+                    "id": "",
+                    "target": "_blank",
+                    "rel": "noopener"
+                }
+            ],
+            "social_links": [],
+            "email_links": [],
+            "related_terms": {
+                "title_terms": {
+                    "life-escortist": 1,
+                    "personal": 1,
+                    "escort": 1,
+                    "qol": 1,
+                    "design": 1,
+                    "syuji": 1,
+                    "konishi": 1,
+                    "studio-crs": 1,
+                    "ceo": 1
+                },
+                "heading_terms": {
+                    "top": 1
+                },
+                "content_terms": {
+                    "life-escortist": 4,
+                    "studio-crs": 4,
+                    "personal": 2,
+                    "escort": 2,
+                    "qol": 2,
+                    "design": 2,
+                    "syuji": 2,
+                    "konishi": 2,
+                    "ceo": 2,
+                    "top": 1,
+                    "official": 1,
+                    "web": 1,
+                    "お待ちしていました": 1,
+                    "日本語": 1,
+                    "been": 1,
+                    "expecting": 1,
+                    "you": 1,
+                    "english": 1,
+                    "vous": 1,
+                    "attendais": 1,
+                    "fran": 1,
+                    "ais": 1,
+                    "ホーム": 1,
+                    "検索": 1,
+                    "トップ": 1
+                },
+                "top_related_terms": [
+                    "life-escortist",
+                    "studio-crs",
+                    "personal",
+                    "escort",
+                    "qol",
+                    "design",
+                    "syuji",
+                    "konishi",
+                    "ceo",
+                    "top",
+                    "official",
+                    "web",
+                    "お待ちしていました",
+                    "日本語",
+                    "been"
+                ]
+            },
+            "semantic_groups": {
+                "groups": {
+                    "brand": {
+                        "life-escortist": 4,
+                        "studio-crs": 4,
+                        "syuji": 2
+                    },
+                    "service": {
+                        "personal": 2,
+                        "design": 2,
+                        "official": 1
+                    },
+                    "action": [],
+                    "location": [],
+                    "other": {
+                        "escort": 2,
+                        "qol": 2,
+                        "konishi": 2,
+                        "ceo": 2,
+                        "top": 1,
+                        "web": 1,
+                        "お待ちしていました": 1,
+                        "日本語": 1,
+                        "been": 1,
+                        "expecting": 1,
+                        "you": 1,
+                        "english": 1,
+                        "vous": 1,
+                        "attendais": 1,
+                        "fran": 1,
+                        "ais": 1,
+                        "ホーム": 1,
+                        "検索": 1,
+                        "トップ": 1
+                    }
+                },
+                "group_count": 3
+            },
+            "duplicate_blocks": {
+                "items": [
+                    {
+                        "text": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist",
+                        "text_length": 151
+                    },
+                    {
+                        "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                        "text_length": 79
+                    }
+                ],
+                "count": 2,
+                "duplicate_rate": 0.222
+            },
+            "keyword_consistency": {
+                "keywords": {
+                    "life-escortist": 4,
+                    "studio-crs": 4,
+                    "personal": 2,
+                    "escort": 2,
+                    "qol": 2,
+                    "design": 2,
+                    "syuji": 2,
+                    "konishi": 2,
+                    "ceo": 2,
+                    "top": 1,
+                    "official": 1,
+                    "web": 1,
+                    "お待ちしていました": 1,
+                    "日本語": 1,
+                    "been": 1,
+                    "expecting": 1,
+                    "you": 1,
+                    "english": 1,
+                    "vous": 1,
+                    "attendais": 1,
+                    "fran": 1,
+                    "ais": 1,
+                    "ホーム": 1,
+                    "検索": 1,
+                    "トップ": 1
+                },
+                "top_keywords": [
+                    "life-escortist",
+                    "studio-crs",
+                    "personal",
+                    "escort",
+                    "qol",
+                    "design",
+                    "syuji",
+                    "konishi",
+                    "ceo",
+                    "top",
+                    "official",
+                    "web",
+                    "お待ちしていました",
+                    "日本語",
+                    "been",
+                    "expecting",
+                    "you",
+                    "english",
+                    "vous",
+                    "attendais",
+                    "fran",
+                    "ais",
+                    "ホーム",
+                    "検索",
+                    "トップ"
+                ]
+            },
+            "context_connection": {
+                "title": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                "description": "Life-Escortist is a luxury personal escort and QOL design service founded by Syuji Konishi, Founder of Life-Escortist and CEO of Studio-crs. Through personal curation, wellness, business guidance, and purpose design, we support an elegant and meaningful life.",
+                "headings": {
+                    "h1": [
+                        "TOP"
+                    ]
+                },
+                "sections": [
+                    {
+                        "type": "heading",
+                        "level": "h1",
+                        "index": 1,
+                        "title": "TOP",
+                        "text_preview": "TOP"
+                    },
+                    {
+                        "type": "article",
+                        "level": "article",
+                        "index": 1,
+                        "title": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’v",
+                        "text_preview": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist",
+                        "text_length": 151
+                    }
+                ],
+                "links": [
+                    {
+                        "url": "https://life-escortist.com/",
+                        "normalized_url": "https://life-escortist.com/",
+                        "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "site-name site-name-text-link",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://life-escortist.com/",
+                        "normalized_url": "https://life-escortist.com/",
+                        "text": "Life-Escortist Official Web",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "header-link",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://life-escortist.com/jp/",
+                        "normalized_url": "https://life-escortist.com/jp/",
+                        "text": "お待ちしていました 日本語",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "welcome-jp gold-text",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://life-escortist.com/en/",
+                        "normalized_url": "https://life-escortist.com/en/",
+                        "text": "I’ve been expecting you. English",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "welcome-en gold-text",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://life-escortist.com/fr/",
+                        "normalized_url": "https://life-escortist.com/fr/",
+                        "text": "Je vous attendais. Français",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "welcome-fr gold-text",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://studio-crs.com/",
+                        "normalized_url": "https://studio-crs.com/",
+                        "text": "Studio-crs",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "footer-link",
+                        "id": "",
+                        "target": "_blank",
+                        "rel": "noopener"
+                    },
+                    {
+                        "url": "https://life-escortist.com/author/life-escortist/",
+                        "normalized_url": "https://life-escortist.com/author/life-escortist/",
+                        "text": "life-escortist",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "author-link",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://life-escortist.com/",
+                        "normalized_url": "https://life-escortist.com/",
+                        "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "site-name site-name-text-link",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://life-escortist.com",
+                        "normalized_url": "https://life-escortist.com",
+                        "text": "ホーム",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "menu-button-in",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "#",
+                        "normalized_url": "https://life-escortist.com#",
+                        "text": "トップ",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "go-to-top-common top-menu-a menu-button-in",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    }
+                ],
+                "content_blocks": [
+                    {
+                        "type": "main",
+                        "index": 1,
+                        "text": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist",
+                        "text_length": 151
+                    },
+                    {
+                        "type": "article",
+                        "index": 1,
+                        "text": "TOP 2026.04.27 Life-Escortist Official Web お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français ©️2002- Studio-crs life-escortist",
+                        "text_length": 151
+                    },
+                    {
+                        "type": "div",
+                        "index": 1,
+                        "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                        "text_length": 79
+                    },
+                    {
+                        "type": "div",
+                        "index": 10,
+                        "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                        "text_length": 79
+                    },
+                    {
+                        "type": "div",
+                        "index": 7,
+                        "text": "お待ちしていました 日本語 I’ve been expecting you. English Je vous attendais. Français",
+                        "text_length": 74
+                    },
+                    {
+                        "type": "div",
+                        "index": 6,
+                        "text": "Life-Escortist Official Web",
+                        "text_length": 27
+                    },
+                    {
+                        "type": "div",
+                        "index": 12,
+                        "text": "© 2002-2026 Studio-crs.",
+                        "text_length": 23
+                    },
+                    {
+                        "type": "div",
+                        "index": 8,
+                        "text": "©️2002- Studio-crs",
+                        "text_length": 18
+                    },
+                    {
+                        "type": "div",
+                        "index": 9,
+                        "text": "life-escortist",
+                        "text_length": 14
+                    }
+                ],
+                "related_terms": {
+                    "title_terms": {
+                        "life-escortist": 1,
+                        "personal": 1,
+                        "escort": 1,
+                        "qol": 1,
+                        "design": 1,
+                        "syuji": 1,
+                        "konishi": 1,
+                        "studio-crs": 1,
+                        "ceo": 1
+                    },
+                    "heading_terms": {
+                        "top": 1
+                    },
+                    "content_terms": {
+                        "life-escortist": 4,
+                        "studio-crs": 4,
+                        "personal": 2,
+                        "escort": 2,
+                        "qol": 2,
+                        "design": 2,
+                        "syuji": 2,
+                        "konishi": 2,
+                        "ceo": 2,
+                        "top": 1,
+                        "official": 1,
+                        "web": 1,
+                        "お待ちしていました": 1,
+                        "日本語": 1,
+                        "been": 1,
+                        "expecting": 1,
+                        "you": 1,
+                        "english": 1,
+                        "vous": 1,
+                        "attendais": 1,
+                        "fran": 1,
+                        "ais": 1,
+                        "ホーム": 1,
+                        "検索": 1,
+                        "トップ": 1
+                    },
+                    "top_related_terms": [
+                        "life-escortist",
+                        "studio-crs",
+                        "personal",
+                        "escort",
+                        "qol",
+                        "design",
+                        "syuji",
+                        "konishi",
+                        "ceo",
+                        "top",
+                        "official",
+                        "web",
+                        "お待ちしていました",
+                        "日本語",
+                        "been"
+                    ]
+                }
+            }
+        },
+        "flow": {
+            "navigation": {
+                "has_navigation": true,
+                "internal_link_count": 9
+            },
+            "page_transition": {
+                "internal_links": [
+                    {
+                        "url": "https://life-escortist.com/",
+                        "normalized_url": "https://life-escortist.com/",
+                        "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "site-name site-name-text-link",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://life-escortist.com/",
+                        "normalized_url": "https://life-escortist.com/",
+                        "text": "Life-Escortist Official Web",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "header-link",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://life-escortist.com/jp/",
+                        "normalized_url": "https://life-escortist.com/jp/",
+                        "text": "お待ちしていました 日本語",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "welcome-jp gold-text",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://life-escortist.com/en/",
+                        "normalized_url": "https://life-escortist.com/en/",
+                        "text": "I’ve been expecting you. English",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "welcome-en gold-text",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://life-escortist.com/fr/",
+                        "normalized_url": "https://life-escortist.com/fr/",
+                        "text": "Je vous attendais. Français",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "welcome-fr gold-text",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://life-escortist.com/author/life-escortist/",
+                        "normalized_url": "https://life-escortist.com/author/life-escortist/",
+                        "text": "life-escortist",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "author-link",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://life-escortist.com/",
+                        "normalized_url": "https://life-escortist.com/",
+                        "text": "Life-Escortist | Personal Escort & QOL Design by Syuji Konishi [Studio-crs CEO]",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "site-name site-name-text-link",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "https://life-escortist.com",
+                        "normalized_url": "https://life-escortist.com",
+                        "text": "ホーム",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "menu-button-in",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    },
+                    {
+                        "url": "#",
+                        "normalized_url": "https://life-escortist.com#",
+                        "text": "トップ",
+                        "title": "",
+                        "aria_label": "",
+                        "class": "go-to-top-common top-menu-a menu-button-in",
+                        "id": "",
+                        "target": "",
+                        "rel": ""
+                    }
+                ],
+                "internal_link_count": 9
+            },
+            "cta": {
+                "count": 0,
+                "items": [],
+                "keywords": [
+                    "お問い合わせ",
+                    "問合せ",
+                    "お問合せ",
+                    "相談",
+                    "無料相談",
+                    "予約",
+                    "ご予約",
+                    "申し込み",
+                    "申込み",
+                    "申込",
+                    "資料請求",
+                    "見積",
+                    "見積もり",
+                    "導入",
+                    "依頼",
+                    "購入",
+                    "注文",
+                    "登録",
+                    "体験",
+                    "診断",
+                    "チェック",
+                    "始める",
+                    "詳しく",
+                    "もっと見る",
+                    "続きを読む",
+                    "contact",
+                    "inquiry",
+                    "reserve",
+                    "reservation",
+                    "booking",
+                    "book",
+                    "apply",
+                    "start",
+                    "trial",
+                    "free",
+                    "quote",
+                    "estimate",
+                    "consult",
+                    "consultation",
+                    "download",
+                    "schedule",
+                    "order",
+                    "buy",
+                    "purchase",
+                    "register",
+                    "signup",
+                    "sign up",
+                    "learn more",
+                    "more",
+                    "detail",
+                    "details"
+                ],
+                "link_count": 0,
+                "button_count": 0,
+                "input_count": 0,
+                "form_count": 0,
+                "search_form_count": 1,
+                "search_forms": [
+                    {
+                        "type": "form",
+                        "index": 1,
+                        "action": "https://life-escortist.com/",
+                        "method": "get",
+                        "aria_label": "",
+                        "class": "search-box input-box",
+                        "id": "",
+                        "is_cta_like": false,
+                        "is_search_like": true
+                    }
+                ]
+            },
+            "cta_placement": {
+                "cta_count": 0,
+                "has_cta": false,
+                "cta_items": []
+            },
+            "conversion_path": {
+                "has_navigation": true,
+                "has_cta": false,
+                "search_form_count": 1
+            },
+            "user_flow": {
+                "has_title": true,
+                "has_h1": true,
+                "has_internal_links": true,
+                "has_cta": false,
+                "cta_count": 0
+            }
+        },
+        "performance": {
+            "html_length": 301694,
+            "text_length": 346,
+            "word_count": 43,
+            "execution_time": 0.46595
+        },
+        "validation": {
+            "valid": true,
+            "issues": [],
+            "heading_errors": [],
+            "structure_warnings": [
+                "Extracted text length is under 1000 characters.",
+                "CTA elements were not detected."
+            ],
+            "structure_errors": []
+        }
+    },
+    "metadata": {
+        "engine": "SWCS",
+        "mode": "collection_only",
+        "generated_at": "2026-08-03T05:38:11+00:00",
+        "api_revision": "SWCS Public API Ver.1.2"
+    }
+}

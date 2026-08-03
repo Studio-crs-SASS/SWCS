@@ -267,11 +267,47 @@ function swcs_normalize_url(string $href, string $baseUrl): string
     return $scheme . '://' . $host . $dir . '/' . $href;
 }
 
+function swcs_is_social_domain(string $domain): bool
+{
+    $domain = strtolower(trim($domain));
+    $domain = preg_replace('/^www\./', '', $domain) ?? $domain;
+
+    $socialDomains = [
+        'instagram.com',
+        'facebook.com',
+        'fb.com',
+        'x.com',
+        'twitter.com',
+        'youtube.com',
+        'youtu.be',
+        'linkedin.com',
+        'tiktok.com',
+        'threads.net',
+        'pinterest.com',
+        'line.me',
+        'lin.ee',
+        't.me',
+    ];
+
+    foreach ($socialDomains as $socialDomain) {
+        if (
+            $domain === $socialDomain ||
+            str_ends_with($domain, '.' . $socialDomain)
+        ) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 function swcs_extract_links(string $html, string $baseUrl, string $baseDomain): array
 {
     $all = [];
     $internal = [];
     $external = [];
+    $social = [];
+    $email = [];
 
     if (preg_match_all('/<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)<\/a>/is', $html, $matches, PREG_SET_ORDER)) {
         foreach ($matches as $match) {
@@ -281,10 +317,34 @@ function swcs_extract_links(string $html, string $baseUrl, string $baseDomain): 
 
             if (
                 $href === '' ||
-                str_starts_with($href, 'mailto:') ||
                 str_starts_with($href, 'tel:') ||
                 str_starts_with($href, 'javascript:')
             ) {
+                continue;
+            }
+
+            if (str_starts_with(strtolower($href), 'mailto:')) {
+                $emailAddressPart = substr($href, 7);
+                $emailAddress = rawurldecode(
+                    explode('?', $emailAddressPart, 2)[0]
+                );
+
+                $item = [
+                    'url' => $href,
+                    'normalized_url' => $href,
+                    'email_address' => trim($emailAddress),
+                    'text' => $text,
+                    'title' => swcs_get_attr($tag, 'title'),
+                    'aria_label' => swcs_get_attr($tag, 'aria-label'),
+                    'class' => swcs_get_attr($tag, 'class'),
+                    'id' => swcs_get_attr($tag, 'id'),
+                    'target' => swcs_get_attr($tag, 'target'),
+                    'rel' => swcs_get_attr($tag, 'rel'),
+                ];
+
+                $all[] = $item;
+                $email[] = $item;
+
                 continue;
             }
 
@@ -309,6 +369,10 @@ function swcs_extract_links(string $html, string $baseUrl, string $baseDomain): 
                 $internal[] = $item;
             } else {
                 $external[] = $item;
+
+                if (swcs_is_social_domain($linkDomain)) {
+                    $social[] = $item;
+                }
             }
         }
     }
@@ -317,10 +381,14 @@ function swcs_extract_links(string $html, string $baseUrl, string $baseDomain): 
         'all' => $all,
         'internal' => $internal,
         'external' => $external,
+        'social' => $social,
+        'email' => $email,
         'counts' => [
             'all' => count($all),
             'internal' => count($internal),
             'external' => count($external),
+            'social' => count($social),
+            'email' => count($email),
         ],
     ];
 }
@@ -1000,6 +1068,69 @@ if (!is_string($url) || filter_var($url, FILTER_VALIDATE_URL) === false) {
     exit;
 }
 
+$mode = $_GET['mode'] ?? $_POST['mode'] ?? '';
+
+if ($mode === 'site_crawl') {
+    $crawlConfig = $config['crawl'] ?? [];
+
+    $configuredMaxPages = (int) ($crawlConfig['limits']['max_pages'] ?? 100);
+    $requestedMaxPages = isset($_GET['crawl_max_pages']) ? (int) $_GET['crawl_max_pages'] : $configuredMaxPages;
+
+    if ($requestedMaxPages > 0) {
+        $crawlConfig['limits']['max_pages'] = min($requestedMaxPages, $configuredMaxPages);
+    }
+
+    if (isset($_GET['crawl_max_depth'])) {
+        $configuredMaxDepth = (int) ($crawlConfig['limits']['max_depth'] ?? 6);
+        $requestedMaxDepth = (int) $_GET['crawl_max_depth'];
+
+        if ($requestedMaxDepth > 0) {
+            $crawlConfig['limits']['max_depth'] = min($requestedMaxDepth, $configuredMaxDepth);
+        }
+    }
+
+    $domain = parse_url($url, PHP_URL_HOST) ?: '';
+
+    $crawler = new \Engine\Crawl\SiteCrawler($crawlConfig, $url);
+    $crawlResult = $crawler->crawl($url);
+
+    $analyzer = new \Engine\Page\PageAnalyzer($crawlConfig, $url);
+
+    $pageResults = [];
+
+    foreach (($crawlResult['visited'] ?? []) as $page) {
+        $pageResults[] = $analyzer->analyze($page);
+    }
+
+    $aggregator = new \Engine\Aggregation\SiteAggregator($crawlConfig);
+    $siteData = $aggregator->aggregate($crawlResult, $pageResults);
+
+    $output = [
+        'status' => 'success',
+        'system' => 'SWCS',
+        'version' => $config['app']['version'] ?? '1.0',
+        'target' => [
+            'url' => $url,
+            'domain' => $domain,
+            'checked_at' => date(DATE_ATOM),
+        ],
+        'data' => $siteData,
+        'metadata' => [
+            'engine' => 'SWCS',
+            'mode' => 'site_crawl',
+            'generated_at' => date(DATE_ATOM),
+            'api_revision' => 'SWCS Public API Site Crawl Ver.1.0',
+        ],
+    ];
+
+    echo json_encode(
+        $output,
+        JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+    );
+
+    exit;
+}
+
 $request = [
     'method' => $_SERVER['REQUEST_METHOD'] ?? 'GET',
     'uri' => $_SERVER['REQUEST_URI'] ?? '/api.php',
@@ -1190,6 +1321,8 @@ $output = [
                 'has_content_blocks' => count($contentBlockItems) > 0,
                 'has_internal_links' => $links['counts']['internal'] > 0,
                 'has_external_links' => $links['counts']['external'] > 0,
+                'has_social_links' => $links['counts']['social'] > 0,
+                'has_email_links' => $links['counts']['email'] > 0,
                 'has_images' => ($media['image_stats']['count'] ?? 0) > 0,
                 'has_cta' => $cta['count'] > 0,
             ],
@@ -1198,6 +1331,8 @@ $output = [
             'all' => $links['all'],
             'internal' => $links['internal'],
             'external' => $links['external'],
+            'social' => $links['social'],
+            'email' => $links['email'],
             'counts' => $links['counts'],
         ],
         'media' => array_merge(
@@ -1211,6 +1346,8 @@ $output = [
         'relationship' => [
             'internal_links' => $links['internal'],
             'external_links' => $links['external'],
+            'social_links' => $links['social'],
+            'email_links' => $links['email'],
             'related_terms' => $relatedTerms,
             'semantic_groups' => $semanticGroups,
             'duplicate_blocks' => $duplicateBlocks,
