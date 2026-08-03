@@ -72,6 +72,18 @@ $relationship = pickArray($data, ['relationship', 'Relationship', 'relations', '
 $flow = pickArray($data, ['flow', 'Flow', 'user_flow', 'journey']);
 $performance = pickArray($data, ['performance', 'Performance', 'timing', 'Timing']);
 $validation = pickArray($data, ['validation', 'Validation', 'check', 'Check']);
+$crawl = pickArray($data, ['crawl', 'Crawl']);
+$pages = findFirstValue($data, [
+    ['pages'],
+    ['site_pages'],
+    ['crawl', 'pages'],
+]);
+
+if (!is_array($pages)) {
+    $pages = [];
+}
+
+$isSiteCrawl = count($crawl) > 0 || count($pages) > 0;
 
 $targetUrl = findFirstString($data, [
     ['target_url'],
@@ -98,14 +110,34 @@ $statusCode = findFirstValue($data, [
     ['code'],
 ]);
 
-$isAccessOk = isSuccessfulStatus($statusCode) || boolValue(findFirstValue($data, [
-    ['access', 'success'],
-    ['access', 'ok'],
-    ['response', 'success'],
-    ['success'],
-]));
+$crawlStatus = findFirstString($data, [
+    ['crawl', 'status'],
+    ['crawl_status'],
+]);
+
+$crawlSuccessCount = findFirstValue($data, [
+    ['crawl', 'success_count'],
+    ['crawl', 'visited_count'],
+]);
+
+$isAccessOk = isSuccessfulStatus($statusCode)
+    || boolValue(findFirstValue($data, [
+        ['access', 'success'],
+        ['access', 'ok'],
+        ['response', 'success'],
+        ['success'],
+    ]))
+    || (
+        $isSiteCrawl
+        && (
+            strtolower($crawlStatus) === 'success'
+            || (is_numeric($crawlSuccessCount) && (int)$crawlSuccessCount > 0)
+        )
+    );
 
 $htmlLength = findFirstValue($data, [
+    ['performance', 'total_html_length'],
+    ['performance', 'html_length'],
     ['content', 'html_length'],
     ['collection', 'html_length'],
     ['collection', 'length'],
@@ -114,11 +146,23 @@ $htmlLength = findFirstValue($data, [
 ]);
 
 $textLength = findFirstValue($data, [
+    ['content', 'total_text_length'],
     ['content', 'text_length'],
     ['collection', 'text_length'],
     ['content', 'body_length'],
     ['text_length'],
     ['body_length'],
+]);
+
+$pageCount = findFirstValue($data, [
+    ['content', 'page_count'],
+    ['crawl', 'visited_count'],
+    ['pages_count'],
+]);
+
+$averageTextLength = findFirstValue($data, [
+    ['content', 'average_text_length'],
+    ['average_text_length'],
 ]);
 
 $checkedAtSource = findFirstString($data, [
@@ -144,6 +188,36 @@ $keywordCandidates = findFirstValue($data, [
 
 if (!is_array($keywordCandidates)) {
     $keywordCandidates = [];
+}
+
+$externalLinks = findFirstValue($data, [
+    ['links', 'external'],
+    ['relationship', 'external_links'],
+    ['external_links'],
+]);
+
+if (!is_array($externalLinks)) {
+    $externalLinks = [];
+}
+
+$socialLinks = findFirstValue($data, [
+    ['links', 'social'],
+    ['relationship', 'social_links'],
+    ['social_links'],
+]);
+
+if (!is_array($socialLinks)) {
+    $socialLinks = [];
+}
+
+$emailLinks = findFirstValue($data, [
+    ['links', 'email'],
+    ['relationship', 'email_links'],
+    ['email_links'],
+]);
+
+if (!is_array($emailLinks)) {
+    $emailLinks = [];
 }
 
 $coverageMapItems = buildCoverageMapItems(
@@ -219,14 +293,13 @@ $detailSections = [
     [
         'title' => 'Content / コンテンツ確認',
         'rows' => [
-            '取得成功' => boolValue(findFirstValue($data, [
-                ['content', 'success'],
-                ['collection', 'success'],
-                ['success'],
-            ])) ? '確認済み' : '未確認',
+            '取得成功' => $isAccessOk ? '確認済み' : '未確認',
+            '確認ページ数' => compactValue($pageCount),
             'HTML量' => compactValue($htmlLength),
             '本文量' => compactValue($textLength),
+            '平均本文量' => compactValue($averageTextLength),
             '単語数' => compactValue(findFirstValue($data, [
+                ['content', 'total_word_count'],
                 ['content', 'word_count'],
                 ['collection', 'word_count'],
                 ['word_count'],
@@ -242,20 +315,37 @@ $detailSections = [
         'title' => 'Links / リンク確認',
         'rows' => [
             '総リンク数' => compactValue(findFirstValue($data, [
+                ['links', 'counts', 'all'],
                 ['links', 'total'],
                 ['links', 'total_count'],
                 ['links', 'count'],
                 ['total_links'],
             ])),
             '内部リンク数' => compactValue(findFirstValue($data, [
-                ['links', 'internal'],
+                ['links', 'counts', 'internal'],
                 ['links', 'internal_count'],
                 ['internal_links'],
             ])),
             '外部リンク数' => compactValue(findFirstValue($data, [
-                ['links', 'external'],
+                ['links', 'counts', 'external'],
                 ['links', 'external_count'],
                 ['external_links'],
+            ])),
+            'SNSリンク数' => compactValue(findFirstValue($data, [
+                ['links', 'counts', 'social'],
+                ['social_links_count'],
+            ])),
+            'メールリンク数' => compactValue(findFirstValue($data, [
+                ['links', 'counts', 'email'],
+                ['email_links_count'],
+            ])),
+            '電話リンク数' => compactValue(findFirstValue($data, [
+                ['links', 'counts', 'telephone'],
+                ['telephone_links_count'],
+            ])),
+            'ファイルリンク数' => compactValue(findFirstValue($data, [
+                ['links', 'counts', 'files'],
+                ['file_links_count'],
             ])),
         ],
     ],
@@ -321,10 +411,32 @@ $detailSections = [
         ],
     ],
     [
+        'title' => 'Crawl Summary / 巡回確認',
+        'rows' => [
+            '巡回モード' => $isSiteCrawl ? 'site_crawl' : 'single_page',
+            '巡回ページ数' => compactValue(findFirstValue($data, [
+                ['crawl', 'visited_count'],
+            ])),
+            '取得成功ページ数' => compactValue(findFirstValue($data, [
+                ['crawl', 'success_count'],
+            ])),
+            '取得失敗ページ数' => compactValue(findFirstValue($data, [
+                ['crawl', 'failed_count'],
+            ])),
+            '除外URL数' => compactValue(findFirstValue($data, [
+                ['crawl', 'excluded_count'],
+            ])),
+            '上限到達' => compactValue(findFirstValue($data, [
+                ['crawl', 'limit_reached'],
+            ])),
+        ],
+    ],
+    [
         'title' => 'Performance / 取得性能',
         'rows' => [
-            'HTML量' => compactValue($htmlLength),
-            '本文量' => compactValue($textLength),
+            '総HTML量' => compactValue($htmlLength),
+            '総本文量' => compactValue($textLength),
+            '平均本文量' => compactValue($averageTextLength),
             '処理時間' => compactValue(findFirstValue($data, [
                 ['performance', 'duration'],
                 ['performance', 'processing_time'],
@@ -339,6 +451,7 @@ $detailSections = [
             '確認結果' => compactValue(findFirstValue($data, [
                 ['validation', 'status'],
                 ['validation', 'result'],
+                ['validation', 'valid'],
             ])) ?: '確認済み',
             '注意点数' => compactValue(findFirstValue($data, [
                 ['validation', 'warnings'],
@@ -796,6 +909,116 @@ function renderRows(array $rows): void
         echo '<div class="detail-value">' . h(compactValue($value)) . '</div>';
         echo '</div>';
     }
+}
+
+function renderLinkListCard(string $title, array $links, int $limit = 10): void
+{
+    if (count($links) === 0) {
+        return;
+    }
+
+    echo '<section class="detail-card link-list-card">';
+    echo '<h3 class="detail-title">' . h($title) . '</h3>';
+
+    $shown = 0;
+
+    foreach ($links as $link) {
+        if (!is_array($link)) {
+            continue;
+        }
+
+        if ($shown >= $limit) {
+            break;
+        }
+
+        $url = $link['normalized_url'] ?? $link['url'] ?? $link['href'] ?? '未取得';
+        $sourcePage = $link['source_page'] ?? $link['source'] ?? $link['page_url'] ?? '未取得';
+        $linkText = $link['text'] ?? $link['label'] ?? '';
+        $domain = $link['domain'] ?? $link['host'] ?? '';
+
+        echo '<div class="detail-row">';
+        echo '<div class="detail-label">' . h('リンクURL') . '</div>';
+        echo '<div class="detail-value">' . h($url) . '</div>';
+        echo '</div>';
+
+        if (trim((string)$domain) !== '') {
+            echo '<div class="detail-row">';
+            echo '<div class="detail-label">' . h('ドメイン') . '</div>';
+            echo '<div class="detail-value">' . h($domain) . '</div>';
+            echo '</div>';
+        }
+
+        echo '<div class="detail-row">';
+        echo '<div class="detail-label">' . h('取得元ページ') . '</div>';
+        echo '<div class="detail-value">' . h($sourcePage) . '</div>';
+        echo '</div>';
+
+        if (trim((string)$linkText) !== '') {
+            echo '<div class="detail-row">';
+            echo '<div class="detail-label">' . h('リンクテキスト') . '</div>';
+            echo '<div class="detail-value">' . h($linkText) . '</div>';
+            echo '</div>';
+        }
+
+        $shown++;
+
+        if ($shown < count($links) && $shown < $limit) {
+            echo '<div class="detail-separator"></div>';
+        }
+    }
+
+    echo '</section>';
+}
+
+function renderEmailLinks(array $emailLinks, int $limit = 10): void
+{
+    if (count($emailLinks) === 0) {
+        return;
+    }
+
+    echo '<section class="detail-card email-links-card">';
+    echo '<h3 class="detail-title">Email Links / メールリンク確認</h3>';
+
+    $shown = 0;
+
+    foreach ($emailLinks as $link) {
+        if (!is_array($link)) {
+            continue;
+        }
+
+        if ($shown >= $limit) {
+            break;
+        }
+
+        $email = $link['email_address'] ?? $link['email'] ?? $link['url'] ?? '未取得';
+        $sourcePage = $link['source_page'] ?? $link['source'] ?? $link['page_url'] ?? '未取得';
+        $linkText = $link['text'] ?? $link['label'] ?? '';
+
+        echo '<div class="detail-row">';
+        echo '<div class="detail-label">' . h('メール') . '</div>';
+        echo '<div class="detail-value">' . h($email) . '</div>';
+        echo '</div>';
+
+        echo '<div class="detail-row">';
+        echo '<div class="detail-label">' . h('取得元ページ') . '</div>';
+        echo '<div class="detail-value">' . h($sourcePage) . '</div>';
+        echo '</div>';
+
+        if (trim((string)$linkText) !== '') {
+            echo '<div class="detail-row">';
+            echo '<div class="detail-label">' . h('リンクテキスト') . '</div>';
+            echo '<div class="detail-value">' . h($linkText) . '</div>';
+            echo '</div>';
+        }
+
+        $shown++;
+
+        if ($shown < count($emailLinks) && $shown < $limit) {
+            echo '<div class="detail-separator"></div>';
+        }
+    }
+
+    echo '</section>';
 }
 
 function renderKeywordCandidates(array $keywords, int $limit = 10): void
@@ -1323,6 +1546,12 @@ function renderErrorPage(string $title, string $message): void
 
         .detail-row:first-of-type {
             border-top: 0;
+        }
+
+        .detail-separator {
+            height: 8px;
+            border-top: 1px dashed #d0d5dd;
+            margin: 8px 0;
         }
 
         .detail-label {
@@ -2112,6 +2341,12 @@ function renderErrorPage(string $title, string $message): void
 
                     <?php if ($detailSection['title'] === 'Content / コンテンツ確認'): ?>
                         <?php renderKeywordCandidates($keywordCandidates, 10); ?>
+                    <?php endif; ?>
+
+                    <?php if ($detailSection['title'] === 'Links / リンク確認'): ?>
+                        <?php renderLinkListCard('External Links / 外部リンク確認', $externalLinks, 10); ?>
+                        <?php renderLinkListCard('Social Links / SNSリンク確認', $socialLinks, 10); ?>
+                        <?php renderEmailLinks($emailLinks, 10); ?>
                     <?php endif; ?>
 
                     <?php if ($detailSection['title'] === 'Relationship / 情報接続'): ?>
