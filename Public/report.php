@@ -165,6 +165,30 @@ $averageTextLength = findFirstValue($data, [
     ['average_text_length'],
 ]);
 
+$totalLinkCount = findFirstValue($data, [
+    ['links', 'counts', 'all'],
+    ['links', 'total'],
+    ['links', 'total_count'],
+    ['links', 'count'],
+    ['total_links'],
+]);
+
+$externalLinkCount = findFirstValue($data, [
+    ['links', 'counts', 'external'],
+    ['links', 'external_count'],
+    ['external_links'],
+]);
+
+$socialLinkCount = findFirstValue($data, [
+    ['links', 'counts', 'social'],
+    ['social_links_count'],
+]);
+
+$emailLinkCount = findFirstValue($data, [
+    ['links', 'counts', 'email'],
+    ['email_links_count'],
+]);
+
 $checkedAtSource = findFirstString($data, [
     ['checked_at'],
     ['timestamp'],
@@ -949,7 +973,7 @@ function renderLinkListCard(string $title, array $links, int $limit = 10): void
         }
 
         echo '<div class="detail-row">';
-        echo '<div class="detail-label">' . h('取得元ページ') . '</div>';
+        echo '<div class="detail-label">' . h('導線ページ') . '</div>';
         echo '<div class="detail-value">' . h($sourcePage) . '</div>';
         echo '</div>';
 
@@ -977,7 +1001,7 @@ function renderEmailLinks(array $emailLinks, int $limit = 10): void
     }
 
     echo '<section class="detail-card email-links-card">';
-    echo '<h3 class="detail-title">Email Links / メールリンク確認</h3>';
+    echo '<h3 class="detail-title">Contact Route / 問い合わせ導線確認</h3>';
 
     $shown = 0;
 
@@ -995,7 +1019,7 @@ function renderEmailLinks(array $emailLinks, int $limit = 10): void
         $linkText = $link['text'] ?? $link['label'] ?? '';
 
         echo '<div class="detail-row">';
-        echo '<div class="detail-label">' . h('メール') . '</div>';
+        echo '<div class="detail-label">' . h('問い合わせ先') . '</div>';
         echo '<div class="detail-value">' . h($email) . '</div>';
         echo '</div>';
 
@@ -1552,6 +1576,138 @@ function renderErrorPage(string $title, string $message): void
             height: 8px;
             border-top: 1px dashed #d0d5dd;
             margin: 8px 0;
+        }
+
+        .site-visibility-summary {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border: 1px solid #d0d5dd;
+            border-radius: 12px;
+            background: #f8fafc;
+        }
+
+        .site-visibility-header {
+            margin-bottom: 6px;
+        }
+
+        .site-visibility-title {
+            margin: 0;
+            font-size: 13px;
+            letter-spacing: 0.03em;
+        }
+
+        .site-visibility-subtitle {
+            margin-top: 2px;
+            font-size: 9.5px;
+            color: #667085;
+        }
+
+        .site-visibility-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+        }
+
+        .site-visibility-item {
+            padding: 6px 7px;
+            border-radius: 9px;
+            background: #ffffff;
+            border: 1px solid #eaecf0;
+        }
+
+        .site-visibility-label {
+            font-size: 8.6px;
+            color: #667085;
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+
+        .site-visibility-value {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #101828;
+            line-height: 1.15;
+        }
+
+        .coverage-meaning {
+            margin-top: 18px;
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid #d0d5dd;
+            background: #f8fafc;
+        }
+
+        .coverage-meaning-header {
+            margin-bottom: 12px;
+        }
+
+        .coverage-meaning-title {
+            margin: 0;
+            font-size: 16px;
+            letter-spacing: 0.03em;
+            color: #101828;
+        }
+
+        .coverage-meaning-subtitle {
+            margin-top: 4px;
+            font-size: 11px;
+            color: #667085;
+        }
+
+        .coverage-meaning-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .coverage-meaning-card {
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #eaecf0;
+            background: #ffffff;
+        }
+
+        .coverage-meaning-number {
+            font-size: 10px;
+            font-weight: 700;
+            color: #667085;
+            margin-bottom: 4px;
+        }
+
+        .coverage-meaning-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #101828;
+            margin-bottom: 5px;
+        }
+
+        .coverage-meaning-text {
+            font-size: 10.4px;
+            line-height: 1.55;
+            color: #475467;
+        }
+
+        .cover-section .executive-view {
+            margin-top: 12px;
+            padding-top: 0;
+        }
+
+        .cover-section .executive-view-text {
+            font-size: 11px;
+            line-height: 1.55;
+        }
+
+        .cover-section .executive-view-cards {
+            gap: 8px;
+        }
+
+        .cover-section .executive-view-card {
+            padding: 10px 12px;
+        }
+
+        .cover-section .executive-view-card-text {
+            font-size: 10.2px;
+            line-height: 1.45;
         }
 
         .detail-label {
@@ -2214,6 +2370,40 @@ function renderErrorPage(string $title, string $message): void
                 </div>
             </div>
 
+            <section class="site-visibility-summary">
+                <div class="site-visibility-header">
+                    <h2 class="site-visibility-title">Site Visibility Summary</h2>
+                    <div class="site-visibility-subtitle">今回確認できたWeb情報</div>
+                </div>
+
+                <div class="site-visibility-grid">
+                    <div class="site-visibility-item">
+                        <div class="site-visibility-label">確認ページ数</div>
+                        <div class="site-visibility-value"><?= h($pageCount !== null ? $pageCount : '-') ?></div>
+                    </div>
+
+                    <div class="site-visibility-item">
+                        <div class="site-visibility-label">取得本文量</div>
+                        <div class="site-visibility-value"><?= h($textLength !== null ? $textLength : '-') ?></div>
+                    </div>
+
+                    <div class="site-visibility-item">
+                        <div class="site-visibility-label">総リンク数</div>
+                        <div class="site-visibility-value"><?= h($totalLinkCount !== null ? $totalLinkCount : '-') ?></div>
+                    </div>
+
+                    <div class="site-visibility-item">
+                        <div class="site-visibility-label">ブランド接続</div>
+                        <div class="site-visibility-value"><?= h($externalLinkCount !== null ? $externalLinkCount : '-') ?></div>
+                    </div>
+
+                    <div class="site-visibility-item">
+                        <div class="site-visibility-label">問い合わせ導線</div>
+                        <div class="site-visibility-value"><?= h($emailLinkCount !== null ? $emailLinkCount : '-') ?></div>
+                    </div>
+                </div>
+            </section>
+
             <section class="executive-view">
                 <div class="executive-view-header">
                     <h2 class="executive-view-title">Executive View</h2>
@@ -2263,7 +2453,7 @@ function renderErrorPage(string $title, string $message): void
             <div class="coverage-map-header">
                 <h2 class="coverage-map-title">SWCS Check Coverage Map</h2>
                 <div class="coverage-map-subtitle">
-                    Web確認領域マップ。これは評価・診断ではなく、SWCSが対象Webサイトについて確認できた領域を視覚化したものです。
+                    SWCSがSADS診断へ進む前に、対象Webサイトから取得できた確認領域を整理したマップです。接続・構造・情報量・リンク・導線など、AI診断の材料がどこまで揃っているかを確認します。
                 </div>
             </div>
 
@@ -2290,6 +2480,33 @@ function renderErrorPage(string $title, string $message): void
             <div class="coverage-map-note">
                 ※ この図は点数・評価・診断結果ではありません。SWCSが確認する領域を視覚化したものであり、AI診断・スコアリングは次工程のSADSで行います。
             </div>
+
+            <section class="coverage-meaning">
+                <div class="coverage-meaning-header">
+                    <h3 class="coverage-meaning-title">Coverage Meaning</h3>
+                    <div class="coverage-meaning-subtitle">このマップで分かること</div>
+                </div>
+
+                <div class="coverage-meaning-grid">
+                    <div class="coverage-meaning-card">
+                        <div class="coverage-meaning-number">01</div>
+                        <div class="coverage-meaning-label">取得できた領域</div>
+                        <div class="coverage-meaning-text">SWCSが対象Webサイトから確認できた情報領域を示します。</div>
+                    </div>
+
+                    <div class="coverage-meaning-card">
+                        <div class="coverage-meaning-number">02</div>
+                        <div class="coverage-meaning-label">SADSへ渡せる材料</div>
+                        <div class="coverage-meaning-text">確認済みの領域は、次工程SADSの診断・スコアリング材料になります。</div>
+                    </div>
+
+                    <div class="coverage-meaning-card">
+                        <div class="coverage-meaning-number">03</div>
+                        <div class="coverage-meaning-label">次に深掘りする領域</div>
+                        <div class="coverage-meaning-text">未取得・一部確認の領域は、SADSまたは追加確認で重点的に見ます。</div>
+                    </div>
+                </div>
+            </section>
 
             <div class="message">
                 SWCSでWeb情報の取得と基本確認ができています。次のSADS（AI診断）へ進める状態です。
@@ -2344,8 +2561,8 @@ function renderErrorPage(string $title, string $message): void
                     <?php endif; ?>
 
                     <?php if ($detailSection['title'] === 'Links / リンク確認'): ?>
-                        <?php renderLinkListCard('External Links / 外部リンク確認', $externalLinks, 10); ?>
-                        <?php renderLinkListCard('Social Links / SNSリンク確認', $socialLinks, 10); ?>
+                        <?php renderLinkListCard('Brand Connection / ブランド接続確認', $externalLinks, 10); ?>
+                        <?php renderLinkListCard('Social Route / SNS導線確認', $socialLinks, 10); ?>
                         <?php renderEmailLinks($emailLinks, 10); ?>
                     <?php endif; ?>
 
@@ -2412,7 +2629,7 @@ function renderErrorPage(string $title, string $message): void
                         <div>
                             <div class="next-step-name">SADS AI Diagnosis</div>
                             <div class="next-step-desc">
-                                SWCSで取得した情報をもとに、AI診断・スコアリング・改善方向の整理へ進みます。
+                                SWCSで取得したWeb情報をもとに、SADSで情報量・構造・導線・接続状態をスコア化し、改善優先度と次工程の導入提案へ整理します。
                             </div>
                         </div>
                     </div>
